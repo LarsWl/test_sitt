@@ -1,11 +1,15 @@
 class TestController < ApplicationController
-
+  before_action :cursor, only: [:index]
 
   def new
   end
 
   def index
-    @tests = Test.all
+    @tests = Test.after(cursor)
+    respond_to do |format|
+      format.html
+      format.json { render json: @tests }
+    end
   end
 
   def create
@@ -20,8 +24,13 @@ class TestController < ApplicationController
   def test_params
     params[:test].permit(
         :name,
-        :text
+        :param_1,
+        :param_2
     )
+  end
+
+  def cursor
+    (params[:page_id].to_i - 1)*Test.page_limit
   end
 
 end

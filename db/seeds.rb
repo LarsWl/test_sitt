@@ -4,4 +4,8 @@
 # Examples:
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#   Character.create(name: 'Luke', movie: movies.first)u
+
+0.upto 100 do |i|
+  Test.create(name: "test_name_#{i}", param_1: "param_1_#{i}", param_2: "param_2_#{i}")
+end

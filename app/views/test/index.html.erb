@@ -1,3 +1,39 @@
-<% @tests.each  do |test| %>
-  
-<% end %>
+<div class = "container">
+  <div class = "row">
+    <div class = col-3>
+      Name
+    </div>
+    <div class = col-3>
+      Param_1
+    </div>
+    <div class = col-3>
+      Param_2
+    </div>
+    <div class = col-3>
+      Created at
+    </div>
+  </div>
+  <% @tests.each  do |test| %>
+    <div class = "row">
+      <div class = col-3>
+        <%= test.name %>
+      </div>
+      <div class = col-3>
+        <%= test.param_1 %>
+      </div>
+      <div class = col-3>
+        <%= test.param_2 %>
+      </div>
+      <div class = col-3>
+        <%= test.created_at.to_formatted_s(:short) %>
+      </div>
+    </div>
+  <% end %>
+  <div class = "row">
+    <div class = "col text-center">
+      <% (params[:page_id].to_i-2).upto (params[:page_id].to_i+2) do |i| %>
+        <%=link_to "#{i}", "/tests/#{i}"%>
+      <% end %>
+    </div>
+  </div>
+</div>
