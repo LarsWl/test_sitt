@@ -1,0 +1,25 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col-3">
+      <%= form_with  model: Test.new do |f|%>
+        <div class = "form-group">
+          <%= f.label :NameField, :Name %>
+          <%= f.text_field :name, id: :NameField, class: 'form-control'%>
+        </div>
+        <div class = "form-group">
+          <%= f.label :Param_1_Field, :Param_1 %>
+          <%= f.text_field :param_1, id: :Param_1_Field, class: 'form-control'%>
+        </div>
+        <div class = "form-group">
+          <%= f.label :Param_2_Field, :Param_2 %>
+          <%= f.text_field :param_2, id: :Param_2_Field, class: 'form-control'%>
+        </div>
+        <div class = "form-group">
+          <%= f.submit 'Create', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+

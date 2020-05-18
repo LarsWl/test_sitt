@@ -32,8 +32,15 @@
   <div class = "row">
     <div class = "col text-center">
       <% (params[:page_id].to_i-2).upto (params[:page_id].to_i+2) do |i| %>
-        <%=link_to "#{i}", "/tests/#{i}"%>
+        <% unless i > @max || i <= 0 %>
+          <%=link_to "#{i}", "/tests/pages/#{i}"%>
+        <% end %>
       <% end %>
+    </div>
+  </div>
+  <div class ="row">
+    <div class = "col">
+      <%=link_to "New record", "/tests/new"%>
     </div>
   </div>
 </div>

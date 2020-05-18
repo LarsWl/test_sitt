@@ -1,6 +1,6 @@
-class TestController < ApplicationController
+class TestsController < ApplicationController
   before_action :cursor, only: [:index]
-
+  before_action :max_pages, only: [:index]
   def new
   end
 
@@ -14,13 +14,15 @@ class TestController < ApplicationController
 
   def create
     @test = Test.create(test_params)
+    @test.save
+    puts @test.errors
     if @test.save
-      redirect_to test_index_url
+      redirect_to '/tests/pages/1'
     end
   end
 
   private
-
+ # Не работает не знаю почему
   def test_params
     params[:test].permit(
         :name,
@@ -33,4 +35,7 @@ class TestController < ApplicationController
     (params[:page_id].to_i - 1)*Test.page_limit
   end
 
+  def max_pages
+    @max = Test.all.length / Test.page_limit + 1
+  end
 end
