@@ -6,7 +6,7 @@ class Test < ApplicationRecord
   end
 
   def self.before(cursor, limit = page_limit)
-    result = order(:created_at).where("id > #{cursor-limit-1} AND id < #{cursor}").limit(limit)
+    result = order(created_at: :desc).where("id < #{cursor}").limit(limit).reverse
   end
 
   def self.page_limit
